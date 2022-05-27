@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import View.PaintPanel;
+
 
 public class Main {
     private static void setConfigs(JFrame frame) {

@@ -1,4 +1,4 @@
-package painters;
+package Model;
 
 import java.awt.Graphics;
 import java.awt.Point;

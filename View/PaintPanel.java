@@ -1,3 +1,5 @@
+package View;
+
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -5,9 +7,6 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
@@ -15,18 +14,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
-import painters.ShapePainter;
+import Controller.ShapePainterController;
 
 
 public class PaintPanel extends JPanel {
     private String polygonType;
     private Point p0;
     private Point p1;
-    private HashMap<String, Polygons> validPolygons = new HashMap<>();
     private Object[] selectOptions;
-    private ShapePainter painter;
+    private ShapePainterController shapePainter;
 
     public PaintPanel() {
+        shapePainter = new ShapePainterController();
         this.setLayout(new GridBagLayout());
 
         JButton displayInput = new JButton("Escolher forma geométrica");
@@ -39,14 +38,7 @@ public class PaintPanel extends JPanel {
         cons.weighty = 1;
         this.add(displayInput, cons);
 
-        Polygons[] rawList = Polygons.values();
-        selectOptions = new Object[rawList.length];
-        int optionsCount = 0;
-        List<Polygons> list = Arrays.asList(rawList);
-        for (Polygons polygon : list) {
-            validPolygons.put(polygon.getValue(), polygon);
-            selectOptions[optionsCount++] = polygon.getValue();
-        }
+        selectOptions = shapePainter.getSelectOptions();
 
         displayInput.addActionListener(new ActionListener() {
             @Override
@@ -76,7 +68,7 @@ public class PaintPanel extends JPanel {
                     }
                 } while(keepLoop);
 
-                painter = validPolygons.get(polygonType).getPainter();
+                shapePainter.setPainter(polygonType);
             }
         });
 
@@ -103,8 +95,6 @@ public class PaintPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if(painter != null && p0 != null && p1 != null) {
-            painter.draw(g, p0, p1);
-        }
+        shapePainter.draw(g, p0, p1);
     }
 }

@@ -1,8 +1,5 @@
-import painters.FreePainter;
-import painters.LinePainter;
-import painters.RectanglePainter;
-import painters.ShapePainter;
-import painters.TrianglePainter;
+package Model;
+
 
 public enum Polygons {
     FREE("Mão livre"),
