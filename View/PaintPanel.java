@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -23,10 +24,12 @@ public class PaintPanel extends JPanel {
     private Point p1;
     private Object[] selectOptions;
     private ShapePainterController shapePainter;
+    private Color backColor = new Color(255, 255, 255);
 
     public PaintPanel() {
         shapePainter = new ShapePainterController();
         this.setLayout(new GridBagLayout());
+        this.setBackground(backColor);
 
         JButton displayInput = new JButton("Escolher forma geométrica");
         GridBagConstraints cons = new GridBagConstraints();
