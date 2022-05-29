@@ -8,6 +8,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(Config.FRAME_WIDTH, Config.FRAME_HEIGHT);
         frame.setLocationRelativeTo(null);
+        frame.setTitle("Shape Painter");
     }
     
     public static void main(String[] args) {
