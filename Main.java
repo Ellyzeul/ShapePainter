@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 
+import Config.Config;
 import View.PaintPanel;
 
 
